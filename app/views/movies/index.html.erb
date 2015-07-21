@@ -1,0 +1,22 @@
+<h1>Rotten Mangoes</h1>
+<%= link_to "Submit a movie!", new_movie_path %>
+<hr>
+
+  <% @movies.each do |movie| %>
+    <div>
+      <%= link_to image_tag(movie.poster_image_url), movie_path(movie) %>
+    </div>
+    <div>
+      <h2><%= link_to movie.title, movie_path(movie) %> | <%= movie.review_average %> </h2>
+    </div>
+    <div>
+      <h3>Release date: <%= formatted_date(movie.release_date) %></h3>
+    </div>
+    <div>
+      <h4>Director: <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</h4>
+    </div>
+    <div>
+      <p><strong>Synopsis:</strong> <%= movie.description %></p>
+    </div>
+    <hr>
+  <% end %>
