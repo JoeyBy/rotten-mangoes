@@ -1,6 +1,11 @@
 <h1>Rotten Mangoes</h1>
 
-
 <% @users.each do |user| %>
-<h2> <%= user.firstname %> <%= user.lastname %> </h2>
+ <h2> User: </h2><p><%= user.firstname %> <%= user.lastname %> | <%= user.email %> </p>
+<% if user.admin == true %>
+          <p> <%= user.firstname %> is an Admin </p>
+      <% else %>
+          <p> <%= user.firstname %> is a regular user </p>
+      <% end %>
+ ------------------------------------
 <% end %>
