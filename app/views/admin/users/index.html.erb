@@ -1,0 +1,11 @@
+<h1>Rotten Mangoes</h1>
+
+<% @users.each do |t| %>
+<strong> User: </strong> <p><%= link_to t.full_name, admin_user_path(t.id) %> | <%= t.email %> </p>
+<% if t.admin == true %>
+    <p> <%= t.firstname %> is an Admin </p>
+<% else %>
+    <p> <%= t.firstname %> is a regular user </p>
+<% end %>
+ ------------------------------------ </br>
+<% end %>

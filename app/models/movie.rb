@@ -23,6 +23,8 @@ class Movie < ActiveRecord::Base
     end
   end
 
+  mount_uploader :poster_image_url, AvatarUploader
+
   protected
 
   def release_date_is_in_the_future
