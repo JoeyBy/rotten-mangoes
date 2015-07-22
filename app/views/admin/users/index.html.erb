@@ -1,5 +1,7 @@
 <h1>Rotten Mangoes</h1>
 
+<%= paginate @users %>
+
 <% @users.each do |t| %>
 <strong> User: </strong> <p><%= link_to t.full_name, admin_user_path(t.id) %> | <%= t.email %> </p>
 <% if t.admin == true %>
