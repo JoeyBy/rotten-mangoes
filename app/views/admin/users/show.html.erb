@@ -1,3 +1,5 @@
+<%= link_to "Back to all users", admin_users_path %>
+
 <h2> CHECK, CHECK, CHECK IT OUT! </h2>
 
 
@@ -9,3 +11,5 @@
 <% end %>
   <h4> They were created on: <%= @users.created_at %> </h4>
   <h4> And last updated on: <%= @users.updated_at %> </h4>
+
+  <%= link_to "edit user", edit_admin_user_path %>
