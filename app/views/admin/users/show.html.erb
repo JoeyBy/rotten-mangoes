@@ -1,0 +1,12 @@
+<% if 
+
+<h2> CHECK, CHECK, CHECK IT OUT! </h2>
+
+  <%= @users.full_name %> | <%= @users.email %> </p>
+<% if @users.admin == true %>
+    <p> <%= @users.firstname %> is an Admin </p>
+<% else %>
+    <p> <%= @users.firstname %> is a regular user </p>
+<% end %>
+  <h4> They were created on: <%= @users.created_at %> </h4>
+  <h4> And last updated on: <%= @users.updated_at %> </h4>

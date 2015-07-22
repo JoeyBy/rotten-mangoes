@@ -1,5 +1,7 @@
 class Admin::UsersController < ApplicationController
 
+  before_filter :is_admin?
+
   def index
     @users = User.all
   end
@@ -14,3 +16,4 @@ class Admin::UsersController < ApplicationController
   # def edit
   # end
 end
+  
