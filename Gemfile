@@ -38,6 +38,8 @@ gem 'carrierwave'
 gem 'tux'
 gem 'pry'
 gem 'kaminari'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 
 # Use unicorn as the app server
 # gem 'unicorn'

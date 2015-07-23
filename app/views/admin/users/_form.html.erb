@@ -1,19 +1,24 @@
-<%= form_for([:admin, @user]) do |f| %>
-  <div>
-    <%= f.label "email" %><br>
-    <%= f.text_field "email" %>
+
+<%= form_for([:admin, @user], :html => {:class => "form"} ) do |f| %>
+  <div class="form-group col-xs-4">
+    <%= f.label "email" %>
+    <%= f.text_field "email", class:"form-control" %>
+    </div>
   </div>
-  <div>
+  <div class="form-group col-xs-4">
     <%= f.label "firstname", "First Name" %><br>
-    <%= f.text_field "firstname" %>
+    <%= f.text_field "firstname", class:"form-control" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= f.label "lastname", "Last Name" %><br>
-    <%= f.text_field "lastname" %>
+    <%= f.text_field "lastname", class:"form-control" %>
   </div>
-  <div>
+  <div class="form-group">
     <%= f.label "admin?" %> <br>
-    <%= f.check_box :admin %>
-    
-  <div><%= f.submit "Submit" %></div>
+    <%= f.check_box :admin, class:"form-control" %>
+  </div>  
+  <div ><%= f.submit "Submit", class:"btn btn-default" %></div>
+  <div> 
+    <%= link_to "Delete User", @user, method: :delete %> 
+  </div>
 <% end %>

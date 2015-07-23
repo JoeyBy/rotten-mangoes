@@ -10,8 +10,11 @@ class Admin::UsersController < ApplicationController
     @users = User.find(params[:id])
   end
 
-  # def new
-  # end
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to admin_users_path, notice: "user has been deleted"
+  end
 
   def edit
     @user = User.find(params[:id])
@@ -26,6 +29,7 @@ class Admin::UsersController < ApplicationController
       render :edit
     end
   end
+
 
   protected
 

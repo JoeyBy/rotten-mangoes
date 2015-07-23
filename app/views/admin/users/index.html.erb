@@ -1,13 +1,31 @@
 <h1>Rotten Mangoes</h1>
 
-<%= paginate @users %>
+<%= paginate @users %> </br>
 
-<% @users.each do |t| %>
-<strong> User: </strong> <p><%= link_to t.full_name, admin_user_path(t.id) %> | <%= t.email %> </p>
-<% if t.admin == true %>
-    <p> <%= t.firstname %> is an Admin </p>
-<% else %>
-    <p> <%= t.firstname %> is a regular user </p>
-<% end %>
- ------------------------------------ </br>
-<% end %>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th> Name </th>
+      <th> Email </th>
+      <th> Account Type </th>
+      <th> Created date </th>
+      <th> Updated date </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |t| %>
+      <tr>
+        <td><%= link_to t.full_name, admin_user_path(t.id) %></td>
+        <td> <%= t.email %> </td>
+        <td> <% if t.admin == true %>
+              <p> Admin </p>
+        <% else %>
+            <p> Regular </p>
+        <% end %></td>
+        <td> <%= t.created_at %> </td>
+        <td> <%= t.updated_at %> </td>
+        <% end %>
+      </tr>
+  </tbody>
+</table>
