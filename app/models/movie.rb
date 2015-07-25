@@ -14,6 +14,10 @@ class Movie < ActiveRecord::Base
   validates :release_date,
     presence: true
 
+  scope :less_than_90 -> { where(runtime_in_minutes: < 90)} 
+  scope :between_90_and_120 -> { where(runtime_in_minutes > 90 and runtime_in_minutes < 120)}
+  scope :greater_than_120 -> { where(runtime_in_minutes > 120)}
+
   def review_average
     if reviews.size > 0
       average = reviews.sum(:rating_out_of_ten)/reviews.size
@@ -34,18 +38,6 @@ class Movie < ActiveRecord::Base
 
   def self.search(query)
     where("director LIKE ? OR title LIKE ?", "%#{query}%", "%#{query}%")
-  end
-
-  def self.less_than_90
-    where("runtime_in_minutes < 90")
-  end
-
-  def self.between_90_and_120
-    where("runtime_in_minutes > 90 AND runtime_in_minutes < 120")
-  end
-
-  def self.greater_than_120
-    where("runtime_in_minutes > 120")
   end
 
 end
