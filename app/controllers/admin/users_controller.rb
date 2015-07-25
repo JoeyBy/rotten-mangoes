@@ -22,7 +22,6 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-
     if @user.update_attributes(user_params)
       redirect_to admin_user_path(@user)
     else
@@ -30,11 +29,23 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+  def new 
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(params[:id])
+    if @user.save
+      redirect_to admin_user_path, notice: "#{@user.firstname} has been created!"
+    else
+      render :new
+    end
+  end
 
   protected
 
   def user_params
-    params.require(:user).permit(:email, :firstname, :lastname, :admin)
+    params.require(:user).permit(:email, :firstname, :lastname, :admin, :password, :password_confirmation)
   end
 
 end

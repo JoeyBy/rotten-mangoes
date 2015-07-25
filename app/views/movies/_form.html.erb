@@ -1,4 +1,5 @@
-<%= form_for @movie do |f| %>
+<div class="container">
+<%= form_for @movie, class:"form-horizontal" do |f| %>
   <% if @movie.errors.any? %>
     <div>
       <%= pluralize(@movie.errors.count, "error") %> prevented this movie from being submitted:
@@ -9,31 +10,47 @@
       </ul>
     </div>
   <% end %>
-  <div>
-    <%= f.label "title" %><br>
-    <%= f.text_field "title" %>
+    <div class="form-group row">
+      <label for="title" class="control-label col-xs-2">Title:</label>
+      <div class="col-xs-10">
+        <%= f.text_field "title", class:"form-control" %>
+      </div>
+    </div>
+  <div class="form-group row">
+    <label for="director" class="control-label col-xs-2">Director:</label>
+    <div class="col-xs-10">  
+      <%= f.text_field "director", class:"form-control" %>
+    </div>
   </div>
-  <div>
-    <%= f.label "release_date" %><br>
-    <%= f.date_field "release_date" %>
+  <div class="form-group row">
+    <label for="runtime_in_minutes" class="control-label col-xs-2">Run Time(in minutes):</label>
+    <div class="col-xs-10">
+      <%= f.text_field "runtime_in_minutes", class:"form-control col-lg-5" %>
+    </div>
   </div>
-  <div>
-    <%= f.label "director" %><br>
-    <%= f.text_field "director" %>
+  <div class="form-group row">
+    <label for="description" class="control-label col-xs-2">Description:</label>
+    <div class="col-xs-10">
+      <%= f.text_field "description", class:"form-control" %>
+    </div>
   </div>
-  <div>
-    <%= f.label "runtime_in_minutes" %><br>
-    <%= f.text_field "runtime_in_minutes" %>
+  <div class="form-group row">
+    <label for="release_date" class="control-label col-xs-2">Release date</label>
+    <div class="col-xs-4">
+      <%= f.date_field "release_date", class:"form-control" %>
+    </div>
   </div>
-  <div>
-    <%= f.label "poster_image_url" %><br>
-    <%= f.file_field "poster_image_url" %>
+  <div class="form-group row">
+    <label for="poster_image_url" class="control-label col-xs-2">Poster Image URL:</label>
+    <div class="col-xs-4">
+      <%= f.file_field "poster_image_url", class:'form-control' %>
+    </div>
   </div>
-  <div>
-    <%= f.label "description" %><br>
-    <%= f.text_area "description" %>
-  </div>
-  <div>
-    <%= f.submit "Submit" %> 
+
+  <div class="form-group row">
+    <div class="col-xs-offset-2 col-xs-4">
+      <button type="submit" class="btn btn-primary btn-lg">Add</button>
+    </div>
   </div>
 <% end %>
+</div>

@@ -1,3 +1,60 @@
 // Place all the styles related to the movies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+*, *:before, *:after {box-sizing:  border-box !important;}
+
+
+
+.img-container-movie {
+  width: 100%;
+  margin: auto;
+}
+
+.movie-image {
+  max-height: 400px;
+  max-width: 100%;
+  box-shadow: 0 0 7px #E8E8E8;
+}
+
+.panel {
+    box-shadow: 0 0px 20px  #E8E8E8;
+}
+
+.panel-heading-mod {
+  background-color: #FFA079 !important;
+}
+
+.panel-body {
+  background-color: whitesmoke;
+}
+
+a {
+  color: inherit;
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #D1D1D1;
+}
+
+.navbar-form .form-control {
+  background-color: #D1D1CA;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+  background-color: #D1D1CA;
+}
+
+.btn-group > .btn, .btn-group-vertical > .btn {
+  background-color: #D1D1CA;
+}
+
+.dropdown-menu { 
+  background-color: #D1D1CA;
+}
+
+

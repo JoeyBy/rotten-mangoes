@@ -1,4 +1,5 @@
 class Movie < ActiveRecord::Base
+
   has_many :reviews, dependent: :destroy
 
   validates :title,
@@ -21,6 +22,22 @@ class Movie < ActiveRecord::Base
     else
       "No reviews yet!"
     end
+  end
+
+  def self.search(query)
+    where("director LIKE ? OR title LIKE ?", "%#{query}%", "%#{query}%")
+  end
+
+  def self.less_than_90
+    where("runtime_in_minutes < 90")
+  end
+
+  def self.between_90_and_120
+    where("runtime_in_minutes > 90 AND runtime_in_minutes < 120")
+  end
+
+  def self.greater_than_120
+    where("runtime_in_minutes > 120")
   end
 
   mount_uploader :poster_image_url, AvatarUploader

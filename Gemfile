@@ -40,6 +40,7 @@ gem 'pry'
 gem 'kaminari'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'rmagick'
 
 # Use unicorn as the app server
 # gem 'unicorn'
