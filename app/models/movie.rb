@@ -24,6 +24,17 @@ class Movie < ActiveRecord::Base
     end
   end
 
+
+  mount_uploader :poster_image_url, AvatarUploader
+
+  protected
+
+  def release_date_is_in_the_future
+    if release_date.present?
+      errors.add(:release_date, "should probably be in the future") if release_date < Date.today
+    end
+  end
+
   def self.search(query)
     where("director LIKE ? OR title LIKE ?", "%#{query}%", "%#{query}%")
   end
@@ -38,16 +49,6 @@ class Movie < ActiveRecord::Base
 
   def self.greater_than_120
     where("runtime_in_minutes > 120")
-  end
-
-  mount_uploader :poster_image_url, AvatarUploader
-
-  protected
-
-  def release_date_is_in_the_future
-    if release_date.present?
-      errors.add(:release_date, "should probably be in the future") if release_date < Date.today
-    end
   end
 
 end
