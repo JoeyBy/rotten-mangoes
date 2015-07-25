@@ -14,9 +14,9 @@ class Movie < ActiveRecord::Base
   validates :release_date,
     presence: true
 
-  scope :less_than_90 -> { where(runtime_in_minutes: < 90)} 
-  scope :between_90_and_120 -> { where(runtime_in_minutes > 90 and runtime_in_minutes < 120)}
-  scope :greater_than_120 -> { where(runtime_in_minutes > 120)}
+  scope :less_than_90, -> { where("runtime_in_minutes: < 90")}
+  scope :between_90_and_120, -> { where("90 < runtime_in_minutes < 120")}
+  scope :greater_than_120, -> { where("runtime_in_minutes > 120")}
 
   def review_average
     if reviews.size > 0
@@ -30,11 +30,11 @@ class Movie < ActiveRecord::Base
   mount_uploader :poster_image_url, AvatarUploader
 
   protected
-  def release_date_is_in_the_future
-    if release_date.present?
-      errors.add(:release_date, "should probably be in the future") if release_date < Date.today
-    end
-  end
+  # def release_date_is_in_the_future
+  #   if release_date.present?
+  #     errors.add(:release_date, "should probably be in the future") if release_date < Date.today
+  #   end
+  # end
 
   def self.search(query)
     where("director LIKE ? OR title LIKE ?", "%#{query}%", "%#{query}%")

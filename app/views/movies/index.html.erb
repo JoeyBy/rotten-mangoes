@@ -2,28 +2,8 @@
 <div class="container-fluid">
   <div class="column">
     <% @movies.each do |movie| %>
-      <div id="main">
-        <div class="col-lg-4 col-sm-6">
-          <div class="panel panel-default">
-            <div class="panel-heading panel-heading-mod">
-              <center><h3><%= link_to movie.title, movie_path(movie) %> | <%= movie.review_average %> </h3></center>
-            </div>
-            <div class="panel-body">
-              <div class="img-container-movie">
-                <%= image_tag(movie.poster_image_url, class:"image-responsive, movie-image center-block") %>
-              </div>
-            </div>
-            <div class="panel-footer">
-              <ul class="list-group">
-                <ls class:"list-group-item"><strong>Release date:</strong> <%= formatted_date(movie.release_date)  %></ls><br>
-                <ls class:"list-group-item"><strong>Director:</strong> <%= movie.director %> | <%= movie.runtime_in_minutes %> minutes</ls><br>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+      <%= render :partial => "movie", :object => movie %>
     <% end %>
-
   </div>
 </div>
 
