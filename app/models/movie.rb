@@ -1,5 +1,4 @@
 class Movie < ActiveRecord::Base
-
   has_many :reviews, dependent: :destroy
 
   validates :title,
@@ -24,11 +23,9 @@ class Movie < ActiveRecord::Base
     end
   end
 
-
   mount_uploader :poster_image_url, AvatarUploader
 
   protected
-
   def release_date_is_in_the_future
     if release_date.present?
       errors.add(:release_date, "should probably be in the future") if release_date < Date.today
