@@ -41,6 +41,7 @@ gem 'kaminari'
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'rmagick'
+gem 'mail'
 
 # Use unicorn as the app server
 # gem 'unicorn'
