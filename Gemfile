@@ -37,6 +37,10 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'carrierwave'
 gem 'tux'
 gem 'pry'
+gem 'kaminari'
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
+gem 'rmagick'
 
 # Use unicorn as the app server
 # gem 'unicorn'

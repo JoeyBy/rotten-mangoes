@@ -1,5 +1,6 @@
 class Movie < ActiveRecord::Base
-  has_many :reviews
+
+  has_many :reviews, dependent: :destroy
 
   validates :title,
     presence: true
@@ -23,6 +24,7 @@ class Movie < ActiveRecord::Base
     end
   end
 
+
   mount_uploader :poster_image_url, AvatarUploader
 
   protected
@@ -31,6 +33,22 @@ class Movie < ActiveRecord::Base
     if release_date.present?
       errors.add(:release_date, "should probably be in the future") if release_date < Date.today
     end
+  end
+
+  def self.search(query)
+    where("director LIKE ? OR title LIKE ?", "%#{query}%", "%#{query}%")
+  end
+
+  def self.less_than_90
+    where("runtime_in_minutes < 90")
+  end
+
+  def self.between_90_and_120
+    where("runtime_in_minutes > 90 AND runtime_in_minutes < 120")
+  end
+
+  def self.greater_than_120
+    where("runtime_in_minutes > 120")
   end
 
 end

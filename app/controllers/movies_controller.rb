@@ -2,6 +2,19 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
+
+    if params[:search]
+      case params[:search]
+      when "short"
+        @movies = @movies.less_than_90
+      when "normal"
+        @movies = @movies.between_90_and_120
+      when "long"
+        @movies = @movies.greater_than_120
+      else
+        @movies = @movies.search(params[:search])
+      end
+    end
   end
 
   def show
@@ -11,6 +24,7 @@ class MoviesController < ApplicationController
   def new
     @movie = Movie.new
   end
+
 
   def edit
     @movie = Movie.find(params[:id])

@@ -1,0 +1,1 @@
+User.create!(firstname: "Joey", lastname: "Byrne", email: "joey.byrne@outlook.com", )

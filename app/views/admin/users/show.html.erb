@@ -1,12 +1,16 @@
-<% if 
+<%= link_to "Back to all users", admin_users_path %>
 
-<h2> CHECK, CHECK, CHECK IT OUT! </h2>
+<h2> <%= @users.full_name %>  </h2>
 
-  <%= @users.full_name %> | <%= @users.email %> </p>
+
+  <p> Email: <%= @users.email %> </p>
 <% if @users.admin == true %>
-    <p> <%= @users.firstname %> is an Admin </p>
+    <p> They are an Admin User </p>
 <% else %>
-    <p> <%= @users.firstname %> is a regular user </p>
+    <p> They are a Regular User </p>
 <% end %>
-  <h4> They were created on: <%= @users.created_at %> </h4>
-  <h4> And last updated on: <%= @users.updated_at %> </h4>
+  <p> They were created on: <%= @users.created_at %> </p>
+  <p> And last updated on: <%= @users.updated_at %> </p>
+
+  <%= link_to "Edit User", edit_admin_user_path %> | 
+  <%= link_to "Delete User", @user, method: :delete %> 
